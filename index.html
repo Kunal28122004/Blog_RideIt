@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Ride-Booking System Design</title>
+  <meta name="description" content="Designing a reliable ride-booking system with smart matching, fair pricing, instant driver swap, and better UX.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="logo">RideIt</div>
+  <div class="nav-links">
+    <a href="#blog">Blog</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#features">Features</a>
+    <a href="#about">Conclusion</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>Building a Smarter Ride-Booking System</h1>
+  <p>
+    Solving driver cancellations and improving rider experience using
+    real-world algorithms, system design, and UX strategies.
+  </p>
+  <div class="hero-buttons">
+    <a href="#blog" class="btn primary">📘 Read Full Blog</a>
+    <a href="#architecture" class="btn outline">🧠 View System Design</a>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container" id="blog">
+
+<!-- INTRO -->
+<section class="card">
+  <h2>Why Ride-Booking Apps Fail at Reliability</h2>
+  <p>
+    Most ride-booking platforms fail not due to a lack of drivers, but because of
+    inefficient matching systems, frequent driver cancellations, long search
+    times, language barriers, safety gaps, and unpredictable pricing.
+  </p>
+  <p>
+    This article explains how a modern ride-booking platform can be designed to
+    be faster, fairer, and more reliable through smarter algorithms and better
+    UX decisions.
+  </p>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="card" id="architecture">
+  <h2>High-Level System Architecture</h2>
+
+  <div class="architecture">
+    <div>📱 Mobile App</div>
+    <span>↓</span>
+    <div>🚪 API Gateway</div>
+    <span>↓</span>
+    <div>⚡ Matching Engine (Redis)</div>
+    <span>↓</span>
+    <div>🗄 Ride & Pricing Service</div>
+    <span>↓</span>
+    <div>🔔 Notification & Chat Services</div>
+  </div>
+
+  <p class="muted">
+    Redis enables ultra-fast real-time matching, while event-driven services
+    ensure cancellations, swaps, and updates happen instantly.
+  </p>
+</section>
+
+<!-- FEATURES -->
+<section class="card" id="features">
+  <h2>🚗 Smart Matching & Lock-In System</h2>
+  <p>
+    Drivers accepting rides and cancelling later is one of the biggest trust
+    breakers. A two-phase lock-in system ensures commitment.
+  </p>
+
+  <ul>
+    <li><b>Soft Lock:</b> Driver confirms availability</li>
+    <li><b>Hard Lock:</b> Driver is locked and cannot accept other rides</li>
+    <li><b>Confirmation Window:</b> No response results in penalties</li>
+  </ul>
+
+  <div class="flow">SEARCH → OFFERED → LOCKED → ONGOING</div>
+
+  <div class="callout">
+    UX Tip: Showing “Driver confirming…” feels faster than a loading spinner.
+  </div>
+
+  <button class="btn primary" onclick="toggleCode('code1')">View Algorithm</button>
+  <pre id="code1" class="code">
+matchDriver(ride):
+  drivers = nearby drivers sorted by score
+  for driver in drivers:
+    send offer
+    wait 7 seconds
+    if accepted:
+      lock driver
+      if confirmed:
+        start ride
+      else:
+        penalize driver
+  </pre>
+</section>
+
+<section class="card">
+  <h2>🚫 Auto-Removing Frequent Cancel Drivers</h2>
+  <p>
+    Cancellation control should protect platform quality, not punish drivers.
+    Repeated cancellations automatically reduce priority or trigger suspension.
+  </p>
+
+  <table>
+    <tr><th>Cancellation Rate</th><th>System Action</th></tr>
+    <tr><td>&lt; 5%</td><td>Normal access</td></tr>
+    <tr><td>5–10%</td><td>Warning issued</td></tr>
+    <tr><td>10–20%</td><td>Reduced priority</td></tr>
+    <tr><td>&gt; 20%</td><td>Temporary suspension</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>⚖️ Fair Pricing Without Price Shock</h2>
+  <p>
+    Users abandon bookings when prices change unexpectedly. A min–max pricing
+    model ensures transparency while remaining flexible.
+  </p>
+
+  <button class="btn primary" onclick="toggleCode('code2')">View Pricing Formula</button>
+  <pre id="code2" class="code">
+Base Fare = Distance × Rate + Time × Rate
+Min Price = Base × 0.9
+Max Price = Base × 1.2
+  </pre>
+
+  <div class="callout">
+    UX Principle: Transparency builds more trust than discounts.
+  </div>
+</section>
+
+<section class="card">
+  <h2>⚡ Instant Driver Swap (Zero-Wait UX)</h2>
+  <p>
+    Backup drivers are pre-matched and stored in memory. If a driver cancels,
+    the next driver is assigned instantly without restarting the search.
+  </p>
+</section>
+
+<section class="card">
+  <h2>🚀 Multi-Driver Search</h2>
+  <p>
+    Instead of sequential searches, ride requests are broadcast to multiple
+    drivers simultaneously.
+  </p>
+  <div class="flow">User → 10 Drivers → 1 Accept → Others Cancel</div>
+</section>
+
+<section class="card">
+  <h2>🌍 Auto Language Translation in Chat</h2>
+  <p>
+    Language differences often cause confusion. Messages are automatically
+    detected, translated, and delivered in the recipient’s language.
+  </p>
+</section>
+
+<section class="card">
+  <h2>👩🐾 Women- & Pet-Friendly Ride Options</h2>
+  <p>
+    Safety and inclusivity are essential. Users can select verified
+    women-friendly or pet-friendly drivers before booking.
+  </p>
+</section>
+
+<section class="card">
+  <h2>⭐ Driver Quality Score</h2>
+  <p>
+    Drivers are ranked using a quality score that rewards good behavior and
+    naturally deprioritizes poor performance.
+  </p>
+
+  <button class="btn primary" onclick="toggleCode('code3')">View Algorithm</button>
+  <pre id="code3" class="code">
+Score =
+  Rating × 0.4 +
+  Acceptance Rate × 0.3 +
+  (1 − Cancellation Rate) × 0.3
+  </pre>
+</section>
+
+</main>
+
+<!-- CONCLUSION -->
+<section class="about" id="about">
+  <h2>Conclusion</h2>
+  <p>
+    Reliable ride-booking systems aren’t built by adding more drivers —
+    they’re built with smarter algorithms, fair policies, and thoughtful UX.
+  </p>
+</section>
+
+<footer>
+  © 2025 • Smart Ride-Booking System Design
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
