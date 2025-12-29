@@ -148,7 +148,58 @@ th, td {
   border: 1px solid #e5e7eb;
 }
 
-/* FOOTER */
+/* HERO enhancements */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px;
+  text-align: left;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+.hero-copy { flex: 1; }
+.hero h1 { font-size: 48px; margin-bottom: 12px; line-height: 1.05; }
+.hero p { font-size: 18px; opacity: 0.95; max-width: 50ch; }
+
+/* hero art */
+.hero-art { width: 420px; height: 280px; flex: 0 0 420px; pointer-events: none; }
+.blobs { width: 100%; height: 100%; display: block; }
+.blob { filter: drop-shadow(0 20px 30px rgba(2,6,23,0.25)); transform-origin: center; }
+.blob-1 { animation: float 7s ease-in-out infinite alternate; }
+.blob-2 { animation: float 9s ease-in-out infinite alternate-reverse; transform-origin: 60% 40%; }
+
+@keyframes float {
+  from { transform: translateY(0) rotate(0deg) scale(1); }
+  to   { transform: translateY(-18px) rotate(6deg) scale(1.03); }
+}
+
+/* Buttons */
+.btn { transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s; }
+.btn:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(2,6,23,0.12); }
+.primary { background: linear-gradient(180deg,#22c55e,#16a34a); color: #022c22; }
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.3,1); will-change: transform, opacity; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* Logo */
+.logo { font-weight: 700; letter-spacing: .4px; transform-origin: left center; transition: transform .35s; }
+.nav:hover .logo { transform: translateY(-2px) scale(1.02); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .blob, .blobs, .hero-art, .btn, .reveal, .logo { transition: none !important; animation: none !important; transform: none !important; }
+}
+
+/* FOOTER (kept) */
 .about {
   background: #f3f4f6;
   text-align: center;
