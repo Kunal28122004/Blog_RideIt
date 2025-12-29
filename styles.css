@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+body {
+  background: #f9fafb;
+  color: #111827;
+  line-height: 1.6;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: #2563eb;
+  color: #fff;
+}
+
+.nav-links a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  margin-top: 24px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 8px;
+}
+
+.primary {
+  background: #22c55e;
+  color: #022c22;
+  font-weight: 600;
+}
+
+.outline {
+  border: 2px solid #fff;
+  color: white;
+}
+
+/* CONTENT */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  margin-bottom: 36px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+.muted {
+  color: #6b7280;
+}
+
+/* ARCHITECTURE */
+.architecture div {
+  background: #eef2ff;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.architecture span {
+  display: block;
+  text-align: center;
+  margin: 6px 0;
+}
+
+/* FLOW + CALLOUT */
+.flow {
+  background: #f3f4f6;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+.callout {
+  background: #ecfeff;
+  border-left: 4px solid #22c55e;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+/* CODE */
+.code {
+  display: none;
+  background: #020617;
+  color: #e5e7eb;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+  overflow-x: auto;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* FOOTER */
+.about {
+  background: #f3f4f6;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+footer {
+  background: #020617;
+  color: #cbd5f5;
+  text-align: center;
+  padding: 20px;
+}
